@@ -7,16 +7,24 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="container">
-    <h1>Board de tarefas</h1>
-    <div class="form">
-      <input type="text" id="taskName" placeholder="Nome da tarefa"/>
-      <input type="text" id="taskTag" placeholder="Etiqueta"/>
-      <button onclick="addTask()">+</button>
-    </div>
-    <div id="taskList" class="task-list"></div>
-    <div class="footer" id="taskFooter">0 tarefas concluídas</div>
-  </div>
+  <main class="container" aria-label="Gerenciador de Tarefas">
+    <header>
+      <h1>Board de tarefas</h1>
+    </header>
+
+    <section class="form-section" aria-label="Formulário de Nova Tarefa">
+      <form class="form" onsubmit="addTask(); return false;">
+        <input type="text" id="taskName" placeholder="Nome da tarefa" aria-label="Nome da tarefa"/>
+        <input type="text" id="taskTag" placeholder="Etiqueta" aria-label="Etiqueta da tarefa"/>
+        <button type="submit" aria-label="Adicionar tarefa">+</button>
+      </form>
+    </section>
+
+    <section id="taskList" class="task-list" aria-label="Lista de Tarefas"></section>
+
+    <footer class="footer" id="taskFooter">0 tarefas concluídas</footer>
+  </main>
+
   <script src="script.js"></script>
 </body>
 </html>

@@ -19,6 +19,7 @@ function addTask() {
   const labelRow = document.createElement("div");
   labelRow.style.display = "flex";
   labelRow.style.alignItems = "center";
+  labelRow.style.flexWrap = "wrap";
   labelRow.style.gap = "10px";
   labelRow.style.marginTop = "4px";
 
@@ -26,14 +27,20 @@ function addTask() {
   tagLabel.className = "tag";
   tagLabel.innerText = tag || "geral";
 
-  const date = document.createElement("span");
+  const completedDate = document.createElement("span");
+  completedDate.style.fontSize = "12px";
+  completedDate.style.color = "#00c853";
+  completedDate.style.display = "none";
+
+  const createdDate = document.createElement("span");
   const createdAt = new Date().toLocaleDateString('pt-BR');
-  date.innerText = `Criado em: ${createdAt}`;
-  date.style.fontSize = "12px";
-  date.style.color = "#999";
+  createdDate.innerText = `Criado em: ${createdAt}`;
+  createdDate.style.fontSize = "12px";
+  createdDate.style.color = "#999";
 
   labelRow.appendChild(tagLabel);
-  labelRow.appendChild(date);
+  labelRow.appendChild(completedDate);
+  labelRow.appendChild(createdDate);
 
   info.appendChild(title);
   info.appendChild(labelRow);
@@ -46,6 +53,9 @@ function addTask() {
     if (!taskItem.classList.contains("done")) {
       taskItem.classList.add("done");
       btn.innerText = "✔️";
+      const doneAt = new Date().toLocaleDateString('pt-BR');
+      completedDate.innerText = `Concluído em: ${doneAt}`;
+      completedDate.style.display = "inline";
       completedCount++;
       updateFooter();
     }
